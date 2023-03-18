@@ -32,8 +32,8 @@ The Quantum Socket Toolkit comes with a set of tools:
 * [**qs-netcat**](https://github.com/qsocket/qs-netcat) - Netcat on steroids. Turn netcat into an TLS encrypted reverse backdoor via TOR (optional) with a true PTY/interactive command shell (```qs-netcat -s MySecret -i```), integrated file-transfer, redirect traffic or give somebody temporary shell access.
 * [**qs-mic**](https://github.com/qsocket/qs-mic) - Access (record audio) the microphone devices of a remote system. (```qs-mic -s MySecret -d 10```)
 * [**qs-proxy**](https://github.com/qsocket/qs-proxy) - Redirects the traffic of an existing program (binary) over the QSRN. It does so by hooking fundamental socket libraries inside libc using LD_PRELOAD method. (Experimental)
-* ...many more examples and tools.
 * [**qs-lite**](https://github.com/qsocket/qs-netcat) - Lightweight version of qs-netcat utility written in pure Rust (no external dependency).
+* ...many more examples and tools.
 
 ---
 
