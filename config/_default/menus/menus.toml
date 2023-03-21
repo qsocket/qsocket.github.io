@@ -1,0 +1,20 @@
+[[navbar]]
+  identifier = "about"
+  name = "About"
+  url = "/about/"
+  weight = 1
+[[navbar]]
+  identifier = "qsrn"
+  name = "QSRN"
+  url = "/qsrn/"
+  weight = 2
+[[navbar]]
+  identifier = "examples"
+  name = "Examples"
+  url = "/examples/"
+  weight = 3
+[[navbar]]
+  identifier = "faqs"
+  name = "FAQs"
+  url = "/faqs/"
+  weight = 4

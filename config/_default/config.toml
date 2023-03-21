@@ -1,0 +1,15 @@
+baseURL = "https://www.qsocket.io/"
+title = "QSocket"
+theme = "hugo-theme-monochrome"
+googleAnalytics = "G-MNS1QE3TTP"
+defaultContentLanguage = "en"
+enableEmoji = true
+paginate = 5
+
+[taxonomies]
+category = "categories"
+tag = "tags"
+series = "series"
+
+[outputs]
+home = ["HTML", "RSS", "JSON"]
