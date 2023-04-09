@@ -3,16 +3,14 @@ title: 'Deploy'
 weight: 1
 ---
 
-#### For Unix-like systems `(almost any OS with a bash)`
+#### For Unix-like systems `(all boxes with bash)`  <a href="javascript:toggle_payloads()" id="toggle_switch">WGET</a>
 ```bash
 bash -c "$(curl -fsSL qsocket.io/0)"
 ```
-
 #### For Windows
 ```powershell
 IEX(New-Object Net.WebClient).downloadString('https://qsocket.io/1')
 ```
-
 #### For Android
 1. Enable USB debugging on the android devive.
 2. Attach the android device to a linux host with adb installed.
@@ -20,3 +18,19 @@ IEX(New-Object Net.WebClient).downloadString('https://qsocket.io/1')
 ```bash
 bash -c "$(curl -fsSL qsocket.io/2)"
 ```
+
+
+<script>
+    var index = 0
+    var payloads = ["curl -fsSL", "wget --no-verbose -O-"]
+    var buttons = ["WGET", "CURL"]
+    function toggle_payloads() {
+        btn = document.getElementById("toggle_switch");
+        btn.text = buttons[((index+1) % 2)]
+        codes = document.getElementsByClassName("language-bash");
+        for (var i = 0; i < codes.length; i++) {
+            codes[i].textContent = codes[i].textContent.replace(payloads[index], payloads[((index+1) % 2)])
+        }
+        index = ((index+1) % 2);
+    }
+</script>
