@@ -5,11 +5,11 @@ weight: 1
 
 #### For Unix-like systems `(all boxes with bash)`  <a href="javascript:toggle_payloads()" id="toggle_switch">WGET</a>
 ```bash
-bash -c "$(curl -fsSL qsocket.io/0)"
+curl -fsSL qsocket.io/0 | bash
 ```
 #### For Windows
 ```powershell
-IEX(New-Object Net.WebClient).downloadString('https://qsocket.io/1')
+irm qsocket.io/1 | iex
 ```
 #### For Android
 1. Enable USB debugging on the android devive.
