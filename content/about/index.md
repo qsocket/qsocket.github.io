@@ -16,6 +16,10 @@ toc: false
 [workflow]: https://github.com/qsocket/qsocket/actions/workflows/main.yml
 [qsrn]: https://github.com/qsocket/qsrn
 
+<div align="center">
+  <img src="../banner.png">
+</div>
+
 The Quantum Socket Toolkit allows two system behind NAT/Firewall to establish a TCP/TLS connection with each other. 
 
 The qsocket library locally derives a universally unique identifier (UUID) and connects two devices through the Quantum Socket Relay Network [(QSRN)][qsrn] regardless and independent of the network layers, local IP Address or geographical location. The entire qsocket project is ported from the original **[gsocket](https://github.com/hackerschoice/gsocket) toolkit of THC**. 
@@ -31,7 +35,6 @@ So why did you reinvent the wheel? Simply because we wanted our own wheel :) Due
 The Quantum Socket Toolkit comes with a set of tools:
 * [**qs-netcat**](https://github.com/qsocket/qs-netcat) - Netcat on steroids. Turn netcat into an TLS encrypted reverse backdoor via TOR (optional) with a true PTY/interactive command shell (```qs-netcat -s MySecret -i```), integrated file-transfer, redirect traffic or give somebody temporary shell access.
 * [**qs-mic**](https://github.com/qsocket/qs-mic) - Access (record audio) the microphone devices of a remote system. (```qs-mic -s MySecret -d 10```)
-* [**qs-proxy**](https://github.com/qsocket/qs-proxy) - Redirects the traffic of an existing program (binary) over the QSRN. It does so by hooking fundamental socket libraries inside libc using LD_PRELOAD method. (Experimental)
 * [**qs-lite**](https://github.com/qsocket/qs-netcat) - Lightweight version of qs-netcat utility written in pure Rust (no external dependency).
 * ...many more examples and tools.
 
