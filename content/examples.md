@@ -14,15 +14,17 @@ toc: false
 <details>
 <summary>RDP connection over QSRN</summary>
 
-![RDP_POC](../windows_rdp_demo.gif)
-
+<video width="760" height="500" controls>
+  <source src="https://github.com/qsocket/qs-netcat/assets/17179401/af46c8fb-cb33-483a-b5c1-9142843da2bd" type="video/mp4">
+</video>
 </details>
 
 <details>
 <summary>ADB access over QSRN</summary>
 
-![ADB_POC](../android_adb_remoting_demo.gif)
-
+<video width="760" height="500" controls>
+  <source src="https://user-images.githubusercontent.com/17179401/216651601-6ddc8ddf-7248-4c2b-bd77-00f00f773c80.mov" type="video/mp4">
+</video>
 </details>
 
 **Usage:**
