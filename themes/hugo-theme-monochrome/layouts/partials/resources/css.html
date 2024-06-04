@@ -6,7 +6,7 @@
     {{- $tocss_opts := dict "targetPath" "style.css" "enableSourceMap" true -}}
     {{- $styles = $styles | resources.ToCSS $tocss_opts -}}
 {{- end -}}
-<link rel="stylesheet" href="{{- $styles.RelPermalink -}}" >
+<link rel="stylesheet" href="{{- $styles.RelPermalink -}}" integrity="{{- $styles.Data.Integrity -}}">
 
 {{/*  Prism.js style  */}}
 {{ if or (and (findRE "<pre" .Content 1) (eq (.Scratch.Get "params").syntax_highlight.lib "prism.js")) (.HasShortcode "emgithub") }}
@@ -14,5 +14,5 @@
     {{- if hugo.IsProduction -}}
         {{ $prism_css = $prism_css | resources.Minify | resources.Fingerprint "sha512" -}}
     {{- end -}}
-    <link rel="stylesheet" href="{{- $prism_css.RelPermalink -}}" >
+    <link rel="stylesheet" href="{{- $prism_css.RelPermalink -}}" integrity="{{- $prism_css.Data.Integrity -}}">
 {{ end }}

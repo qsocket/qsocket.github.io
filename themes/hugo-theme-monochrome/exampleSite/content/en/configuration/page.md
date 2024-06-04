@@ -48,6 +48,16 @@ search_hidden: true
 
 > default: false
 
+## Header Anchor Link
+
+Control anchor link rendering for a single page.
+
+```yaml
+header_anchor: true
+```
+
+> default: theme's [`enable_header_anchor`](/hugo-theme-monochrome/configuration/theme/#header-anchor-link)
+
 ## Table of Contents
 
 ```yaml
@@ -118,7 +128,7 @@ zooming_js: false
 ---
 ```
 
-> default: theme's [`enable_zooming_js`](/hugo-theme-monochrome/configuration/theme/#zooming_js)
+> default: theme's [`enable_zooming_js`](/hugo-theme-monochrome/configuration/theme/#zoomingjs)
 
 ### Disqus
 
@@ -128,7 +138,7 @@ disqus: false
 ---
 ```
 
-> default for post page: site's [`disqusShortname`](/hugo-theme-monochrome/zh-tw/configuration/site/#disqus)
+> default for post page: site's [`disqusShortname`](/hugo-theme-monochrome/configuration/site/#disqus)
 > 
 > default for other pages: false
 
@@ -152,7 +162,7 @@ code_copy: false
 ---
 ```
 
-> default: theme's [`enable_code_copy`](/hugo-theme-monochrome/configuration/theme/#using-chroma-hugo-built-in)
+> default: theme's [`enable_code_copy`](/hugo-theme-monochrome/configuration/theme/#syntax-highlighting)
 
 ## SEO
 

@@ -124,11 +124,24 @@ menu:
   enable_pagination = false # default: false
 ```
 
+## Header Anchor Link
+
+Render an anchor link next to the header element.
+
+```toml
+[params]
+enable_header_anchor = false # default: true
+```
+
 ## External Library
 
 ### MathJax
 
-Use `$` to create inline result, `$$` to create block result.
+Use `$` ... `$` or `\(` ... `\)` to create inline result, `$$` ... `$$` or `\\[` ... `\\]` to create block result.
+
+> You may also want to setup the [Goldmark passthrough extension](https://gohugo.io/content-management/mathematics).
+>
+> Besides, double-escape the `$` delimiter (`\\$`) if you encounter rendering issue outside the math context.
 
 ```toml
 [params]
@@ -221,3 +234,24 @@ A flag to render open twitter cards template. See [Twitter Cards](https://gohugo
 [params]
 enable_twitter_cards = false # default: true
 ```
+
+## Custom CSS
+
+You can override the default styles by creating a new `/static/user.css` file.
+
+## Default Color Scheme
+
+You can set the default color scheme for your website
+
+```toml
+[params]
+color_scheme = "dark" # "light" or "dark"
+```
+
+> default: "light"
+
+## Custom head
+
+You can insert your custom code in `<head>` section using the `/layouts/partials/user_head.html` file.
+
+This is useful for inject third-partiy libraries (e.g. Google Ads) or your custom script. 

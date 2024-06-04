@@ -65,4 +65,4 @@
 {{- else -}}
     {{ $js = $js | js.Build }}
 {{- end -}}
-<script defer src='{{ $js.RelPermalink }}?raw_file_url={{ $raw_file_url }}&lang={{ $lang }}&line_begin={{ $line_range_begin }}&line_end={{ $line_range_end }}&id=emgithub_{{ .Ordinal }}' ></script>
+<script defer src='{{ $js.RelPermalink }}?raw_file_url={{ $raw_file_url }}&lang={{ $lang }}&line_begin={{ $line_range_begin }}&line_end={{ $line_range_end }}&id=emgithub_{{ .Ordinal }}' integrity="{{- $js.Data.Integrity -}}"></script>
