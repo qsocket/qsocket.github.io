@@ -10,8 +10,11 @@ keywords:
 - qsocket
 - backdoor
 - shell
+- access
+- E2E
+- P2P
 ---
 
-{{< icon name="github" link="https://github.com/qsocket/qsocket" >}}
+{{< icon vendor="feather" name="github" link="https://github.com/qsocket/qsocket" >}}
 
-Quantum Socket allows two workstations on different private networks to communicate with each other. Through firewalls and through NAT - like there is no firewall.
+Quantum Socket allows **end-to-end (E2E) encrypted peer-to-peer (P2P) communication** through firewalls and NAT 🎉  

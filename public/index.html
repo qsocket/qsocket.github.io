@@ -1,2 +1,554 @@
-<!doctype html><html lang=en-us><head><meta name=generator content="Hugo 0.110.0"><meta charset=utf-8><link rel="shortcut icon" href=/favicon.ico type=image/x-icon><meta name=viewport content="width=device-width,initial-scale=1"><title>QSocket</title><meta property="og:title" content="QSocket"><meta property="og:description" content><meta property="og:type" content="website"><meta property="og:url" content="https://www.qsocket.io/"><meta name=twitter:card content="summary"><meta name=twitter:title content="QSocket"><meta name=twitter:description content><link rel=stylesheet href=/style.min.5297c96c59a52afaa5bcda4a6cedf3813081f64025c209b25b2ee6d0c8f74d462b625ad3404a92a14d7a51b4ec0a420337ae70f426fa4bce2d5f7459a3ca7274.css integrity="sha512-UpfJbFmlKvqlvNpKbO3zgTCB9kAlwgmyWy7m0Mj3TUYrYlrTQEqSoU16UbTsCkIDN65w9Cb6S84tX3RZo8pydA=="><script>localStorage.theme==="dark"||!("theme"in localStorage)&&window.matchMedia("(prefers-color-scheme: dark)").matches?document.documentElement.setAttribute("data-theme","dark"):document.documentElement.setAttribute("data-theme","light")</script><script defer src=/js/header.7a2a109ec3782c57bad0332b662f8a5f41765505936b69868eb8bd5241de9daf23c388e82ca1831f6d09935013dcb9f71bfa7face3975880c1076028b7b0a6e1.js integrity="sha512-eioQnsN4LFe60DMrZi+KX0F2VQWTa2mGjri9UkHena8jw4joLKGDH20Jk1AT3Ln3G/p/rOOXWIDBB2Aot7Cm4Q=="></script>
-<script defer src=/js/zooming.684b5d075bf94d0adfa21a7e7eb9acec1ddfb2e7b47d6657981617f0db0cf50949f1172801595afa3051f51b28d67f6a2d0c41be677b59b564307d9dbe4a4fd2.js integrity="sha512-aEtdB1v5TQrfohp+frms7B3fsue0fWZXmBYX8NsM9QlJ8RcoAVla+jBR9Rso1n9qLQxBvmd7WbVkMH2dvkpP0g=="></script></head><body><main><header><div class=brand><div id=sidebar_btn><svg id="menu_icon" width="26" height="26" viewBox="0 0 24 24"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></svg></div><div><a href=/>QSocket</a></div></div><div class=toolbox><div id=theme_tool><svg id="dark_mode_btn" class="hidden toolbox-btn" width="18" height="18" viewBox="0 0 24 24"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></svg><svg id="light_mode_btn" class="hidden toolbox-btn" width="18" height="18" viewBox="0 0 24 24"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></svg></div></div></header><nav id=navbar class=pure-menu><ul class=pure-menu-list></ul></nav><div id=sidebar_canvas_overlay class=hidden></div><div id=sidebar class=close><ul></ul></div><div id=content class=content-margin><div class="postcard-layout content-margin"></div></div></main></body></html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang='en'><head>
+	<meta name="generator" content="Hugo 0.126.3"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href='http://localhost:1313/favicon.ico' type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>QSocket</title>
+
+    
+
+    
+    <meta name="keywords" content="qsocket,backdoor,shell,access,E2E,P2P" />
+    
+
+    
+    <meta name="author" content="faptain" />
+    
+
+    
+        <meta property="og:url" content="http://localhost:1313/">
+  <meta property="og:site_name" content="QSocket">
+  <meta property="og:title" content="QSocket">
+  <meta property="og:description" content="Quantum Socket allows end-to-end (E2E) encrypted peer-to-peer (P2P) communication through firewalls and NAT 🎉">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+
+    
+
+    
+        
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="QSocket">
+  <meta name="twitter:description" content="Quantum Socket allows end-to-end (E2E) encrypted peer-to-peer (P2P) communication through firewalls and NAT 🎉">
+
+    <link rel="stylesheet" href="/style.css" integrity="">
+
+
+
+
+        
+  
+    
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-MNS1QE3TTP"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-MNS1QE3TTP');
+        }
+      </script>
+    
+  
+
+
+    
+
+    
+    <script>
+        if (!('theme' in localStorage)) {
+            localStorage.theme = 'light';
+        }
+
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.setAttribute("data-theme", "dark");
+        } else {
+            document.documentElement.setAttribute("data-theme", "light");
+        }
+    </script>
+<script defer src="/js/header.js" integrity=""></script>
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    <script defer src="/js/search-en.js" integrity=""></script>
+
+
+
+
+
+
+    
+</head>
+<body><header>
+    <div id="header_left">
+        <div id="sidebar_btn">
+            <input type="checkbox" id="sidebar_btn_input" class="hidden" />
+            <label id="sidebar_btn_label" for="sidebar_btn_input">
+                <svg id="menu_icon" width="26px" height="26px" viewBox="0 0 24 24">
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24" height="24" viewBox="0 0 24 24" fill="none"
+    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+    stroke-linejoin="round">
+    <line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>
+</svg>
+
+</svg>
+            </label>
+            <label id="sidebar_canvas_overlay_wrapper" for="sidebar_btn_input">
+                <div id="sidebar_canvas_overlay"></div>
+            </label>
+            <div id="sidebar">
+                <ul><li>
+                            <a href="/about/">About</a></li><li>
+                            <a href="/qsrn/">QSRN</a></li><li>
+                            <a href="/examples/">Examples</a></li><li>
+                            <a href="/faqs/">FAQs</a></li></ul>
+            </div>
+        </div>
+    
+        <div class="brand">
+            <div>
+                <a href="/">QSocket</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="toolbox">
+        <div id="theme_tool">
+            <svg id="dark_mode_btn" class="toolbox-btn" width="18px" height="18px" viewBox="0 0 24 24">
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24" height="24" viewBox="0 0 24 24" fill="none"
+    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+    stroke-linejoin="round">
+    <circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+</svg>
+
+</svg>
+            <svg id="light_mode_btn" class="toolbox-btn" width="18px" height="18px" viewBox="0 0 24 24">
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24" height="24" viewBox="0 0 24 24" fill="none"
+    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+    stroke-linejoin="round">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+</svg>
+
+</svg>
+        </div>
+
+        
+            <div id="search_tool">
+                <svg id="search_btn" class="toolbox-btn" width="18px" height="18px" viewBox="0 0 24 24">
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24" height="24" viewBox="0 0 24 24" fill="none"
+    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+    stroke-linejoin="round">
+    <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+</svg>
+
+</svg><div id="search_menu_wrapper" class="hidden">
+    <div id="search_menu">
+        <div id="search_menu_toolbar">
+            <div id="search_menu_input_wrapper">
+                <input id="search_menu_input" type="text" placeholder='Search Posts'>
+            </div>
+            <div id="search_menu_close_btn">
+                <svg width="18px" height="18px" viewBox="0 0 24 24">
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24" height="24" viewBox="0 0 24 24" fill="none"
+    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+    stroke-linejoin="round">
+    <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
+</svg>
+
+</svg>
+            </div>
+        </div>
+        <div id="search_menu_results">
+        </div>
+    </div>
+</div>
+</div>
+        
+
+        
+    </div>
+</header>
+<nav id="navbar" class="pure-menu">
+    <ul class="pure-menu-list"><li class="navbar-item pure-menu-item ">
+                    
+                        <a href="/about/" class="pure-menu-link">About</a>
+                    
+                </li><li class="navbar-item pure-menu-item ">
+                    
+                        <a href="/qsrn/" class="pure-menu-link">QSRN</a>
+                    
+                </li><li class="navbar-item pure-menu-item ">
+                    
+                        <a href="/examples/" class="pure-menu-link">Examples</a>
+                    
+                </li><li class="navbar-item pure-menu-item ">
+                    
+                        <a href="/faqs/" class="pure-menu-link">FAQs</a>
+                    
+                </li></ul>
+</nav>
+<main>
+            <div id="content" class="content-margin">
+                
+
+    <div class="balloon-layout">
+        
+
+
+
+<div class="balloon-head-item">
+    
+    <div class="balloon-head-item-desktop">
+        <div class="balloon-head-item-img-light">
+            
+    <div class="balloon-head-item-img">
+        <img alt="balloon_head" src='http://localhost:1313/icons/wormhole_dark.png' >
+    </div>
+
+
+        </div>
+        <div class="balloon-head-item-img-dark">
+            
+    <div class="balloon-head-item-img">
+        <img alt="balloon_head" src='http://localhost:1313/icons/wormhole.png' >
+    </div>
+
+
+        </div>
+        
+<div class="balloon-line-container">
+    
+    <div class="balloon-line" style="width: 2px"></div>
+    
+</div>
+
+    </div>
+    
+    <div class="balloon-head-item-mobile">
+        <div class="balloon-head-item-img-light">
+            
+    <div class="balloon-head-item-img">
+        <img alt="balloon_head" src='http://localhost:1313/icons/wormhole_dark.png' >
+    </div>
+
+
+        </div>
+        <div class="balloon-head-item-img-dark">
+            
+    <div class="balloon-head-item-img">
+        <img alt="balloon_head" src='http://localhost:1313/icons/wormhole.png' >
+    </div>
+
+
+        </div>
+    </div>
+
+    <div class="balloon-head-item-content">
+
+
+
+<article >
+    
+    
+        
+        
+    
+    <div class="icon">
+    
+        <a rel="noopener" target="_blank" href="https://github.com/qsocket/qsocket" aria-label="github">
+    
+        
+            
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24" height="24" viewBox="0 0 24 24" fill="none"
+    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+    stroke-linejoin="round">
+    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+
+
+        
+    
+        </a>
+    
+</div>
+
+<p>Quantum Socket allows <strong>end-to-end (E2E) encrypted peer-to-peer (P2P) communication</strong> through firewalls and NAT 🎉</p>
+
+</article>
+</div>
+</div>
+
+
+        
+        
+        
+
+        
+            
+
+            
+                <div class="balloon-title-item">
+    <div class="balloon-title-item-line">
+        
+<div class="balloon-line-container">
+    
+    <div class="balloon-line" style="width: 2px"></div>
+    
+</div>
+
+    </div>
+    <h5 class="balloon-title-item-content">Deploy</h5>
+</div>
+                <div class="balloon-card-item">
+    <div class="balloon-card-item-line">
+        
+<div class="balloon-line-container">
+    
+    <div class="balloon-line" style="width: 2px"></div>
+    
+</div>
+
+        <div class="balloon-dot"></div>
+
+        
+<div class="balloon-line-container">
+    
+    <div class="balloon-line" style="width: 2px"></div>
+    
+</div>
+
+    </div>
+
+    <div class="balloon-card-item-content">
+
+
+
+<article class="line-numbers">
+    
+    
+    
+<h4>For <strong>ALL</strong> *nix systems with bash | <i class="fa-brands fa-linux"></i> <i class="fa-brands fa-apple"></i> <i class="fa-brands fa-ubuntu"></i> <i class="fa-brands fa-debian"></i> <i class="fa-brands fa-fedora"></i> <i class="fa-brands fa-centos"></i> <i class="fa-brands fa-redhat"></i> <i class="fa-brands fa-suse"></i> <i class="fa-brands fa-freebsd"></i> &hellip; <a style="float:right" href="javascript:toggle_payloads()" id="toggle_switch">WGET</a></h4>
+
+<pre><code class="language-bash">curl -fsSL qsocket.io/0 | bash
+</code></pre>
+
+<h4>For Windows |  <i class="fa-brands fa-windows"></i></h4>
+
+<pre><code class="language-powershell">irm qsocket.io/1 | iex
+</code></pre>
+
+<h4>For Android | <i class="fa-brands fa-android"></i></h4>
+
+<ol>
+<li>Enable USB debugging on the android devive.</li>
+<li>Attach the android device to a linux host with adb installed.</li>
+<li>Run the following command on the linux host&hellip;</li>
+</ol>
+<pre><code class="language-bash">bash -c &quot;$(curl -fsSL qsocket.io/2)&quot;
+</code></pre>
+<hr>
+<p>QSocket toolkit supports <strong>12 platforms on 11 architecture</strong> and can be deployed on nearly any device with internet access. Check <a href="https://www.qsocket.io/examples/">here</a> for more deploy options.</p>
+<script src="https://kit.fontawesome.com/f1a1e1311b.js" crossorigin="anonymous"></script>
+<script>
+    var index = 0
+    var payloads = ["curl -fsSL", "wget --no-verbose -O-"]
+    var buttons = ["WGET", "CURL"]
+    function toggle_payloads() {
+        btn = document.getElementById("toggle_switch");
+        btn.text = buttons[((index+1) % 2)]
+        codes = document.getElementsByClassName("language-bash");
+        for (var i = 0; i < codes.length; i++) {
+            codes[i].textContent = codes[i].textContent.replace(payloads[index], payloads[((index+1) % 2)])
+        }
+        index = ((index+1) % 2);
+    }
+</script>
+
+</article>
+</div>
+</div>
+
+            
+                <div class="balloon-title-item">
+    <div class="balloon-title-item-line">
+        
+<div class="balloon-line-container">
+    
+    <div class="balloon-line" style="width: 2px"></div>
+    
+</div>
+
+    </div>
+    <h5 class="balloon-title-item-content">Install Toolkit</h5>
+</div>
+                <div class="balloon-card-item">
+    <div class="balloon-card-item-line">
+        
+<div class="balloon-line-container">
+    
+    <div class="balloon-line" style="width: 2px"></div>
+    
+</div>
+
+        <div class="balloon-dot"></div>
+
+        
+<div class="balloon-line-container">
+    
+    <div class="balloon-line" style="width: 2px"></div>
+    
+</div>
+
+    </div>
+
+    <div class="balloon-card-item-content">
+
+
+
+<article class="line-numbers">
+    
+    
+    
+<h3><i class="fa-solid fa-file-zipper"></i> Download</h3>
+
+<p>Download the pre-build <a href="https://github.com/qsocket/qs-netcat">qs-netcat</a> release for your OS <a href="https://github.com/qsocket/qs-netcat/releases">here</a></p>
+<hr>
+
+<h3><i class="fa-brands fa-golang"></i> Build From Source</h3>
+
+<p>Or install the <a href="https://github.com/qsocket/qs-netcat">qs-netcat</a> tool using go.</p>
+<pre><code class="language-bash">go install github.com/qsocket/qs-netcat@master 
+</code></pre>
+<hr>
+
+<h3><i class="fa-brands fa-docker"></i> Docker</h3>
+
+<p>Or pull the ready to use docker image.</p>
+<pre><code>docker pull qsocket/qsocket:latest
+</code></pre>
+<hr>
+
+<h3><i class="fa-solid fa-terminal"></i> Run In Cloud</h3>
+
+<p>Or open and build it in Google Cloud Shell.</p>
+<div align="left" style="float:left">
+  <a href="https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/qsocket/qs-netcat&tutorial=README.md">
+    <img src="../cloud-shell.png">
+  </a>
+</div>
+
+</article>
+</div>
+</div>
+
+            
+                <div class="balloon-title-item">
+    <div class="balloon-title-item-line">
+        
+<div class="balloon-line-container">
+    
+    <div class="balloon-line" style="width: 2px"></div>
+    
+</div>
+
+    </div>
+    <h5 class="balloon-title-item-content">Access</h5>
+</div>
+                <div class="balloon-card-item">
+    <div class="balloon-card-item-line">
+        
+<div class="balloon-line-container">
+    
+    <div class="balloon-line" style="width: 2px"></div>
+    
+</div>
+
+        <div class="balloon-dot"></div>
+
+        
+<div class="balloon-line-container">
+    
+</div>
+
+    </div>
+
+    <div class="balloon-card-item-content">
+
+
+
+<article class="line-numbers">
+    
+    
+    <p>Connect to the remote system using the secret value.</p>
+<pre><code class="language-bash">qs-netcat -i -s MySecret
+</code></pre>
+<p>Check <a href="https://www.qsocket.io/examples/">here</a> for more usage examples.</p>
+
+</article>
+</div>
+</div>
+
+            
+        
+    </div>
+
+
+
+
+                
+                    
+                
+            </div>
+        </main>
+<footer>
+    <article>Copyright © 2022-2023 by QSocket</article>
+</footer>
+
+</body>
+</html>
