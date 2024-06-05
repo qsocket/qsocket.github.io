@@ -21,12 +21,12 @@ bash -c "$(curl -fsSL qsocket.io/2)"
 ```
 ---
 
-QSocket toolkit supports **12 platforms on 11 architecture** and can be deployed on nearly any device with internet access. Check [here](https://www.qsocket.io/examples/) for more deploy options.
+QSocket toolkit supports **12 platforms on 11 architecture** and can be deployed on nearly any device with internet access. Check [here](https://www.qsocket.io/examples/#deploy-examples) for more deploy options.
 
 <script src="https://kit.fontawesome.com/f1a1e1311b.js" crossorigin="anonymous"></script>
 <script>
     var index = 0
-    var payloads = ["curl -fsSL", "wget --no-verbose -O-"]
+    var payloads = ["curl -fsSL", "wget -q -O-"]
     var buttons = ["WGET", "CURL"]
     function toggle_payloads() {
         btn = document.getElementById("toggle_switch");
