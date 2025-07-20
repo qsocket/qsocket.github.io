@@ -20,25 +20,17 @@ toc: false
   <img src="../banner.png">
 </div>
 
-The Quantum Socket Toolkit allows two system behind NAT/Firewall to establish a TCP/TLS connection with each other. 
+Quantum Socket allows end-to-end (E2E) encrypted peer-to-peer (P2P) communication through firewalls and NAT 🎉
 
 The qsocket library locally derives a universally unique identifier (UUID) and connects two devices through the Quantum Socket Relay Network [(QSRN)][qsrn] regardless and independent of the network layers, local IP Address or geographical location. The entire qsocket project is ported from the original **[gsocket](https://github.com/hackerschoice/gsocket) toolkit of THC**. 
 
 ## But Why?
-So why did you reinvent the wheel? Simply because we wanted our own wheel :) Due to several design choices of THC and the nature of the project we were not comfortable using the GSRN for our own business. So we decided to create our own version to our own liking. We also wanted to modernize the project by porting it to Go/Rust, add new features, more platform support, and scalability.
+So why did you reinvent the wheel? Simply because we wanted our own wheel :) Due to several design choices of THC and the nature of the project we were not comfortable using the GSRN for our own business. So we decided to create our own version to our own liking. We also wanted to modernize the project by porting it to Go/Rust, add new features, more platform support, new features, and scalability.
 
 <div align="center">
   <img src="../gorust.jpg">
 </div>
 
-
-The Quantum Socket Toolkit comes with a set of tools:
-* [**qs-netcat**](https://github.com/qsocket/qs-netcat) - Netcat on steroids. Turn netcat into an TLS encrypted reverse backdoor via TOR (optional) with a true PTY/interactive command shell (```qs-netcat -s MySecret -i```), integrated file-transfer, redirect traffic or give somebody temporary shell access.
-* [**qs-mic**](https://github.com/qsocket/qs-mic) - Access (record audio) the microphone devices of a remote system. (```qs-mic -s MySecret -d 10```)
-* [**qs-lite**](https://github.com/qsocket/qs-netcat) - Lightweight version of qs-netcat utility written in pure Rust (no external dependency).
-* ...many more examples and tools.
-
----
 
 ### Supported Platforms
 QSocket toolkit supports 12 platforms on 11 architecture, check **Supported Platforms** below for detailed table.
@@ -46,13 +38,23 @@ QSocket toolkit supports 12 platforms on 11 architecture, check **Supported Plat
 <details>
 <summary>Supported Platforms</summary>
 
-|     Tool      | **Linux** | **Windows** | **Darwin** | **FreeBSD** | **OpenBSD** | **NetBSD** | **Android** | **IOS** | **Solaris** | **Illumos** | **Dragonfly** | **AIX** |
-| :-----------: | :-------: | :---------: | ---------- | ----------- | ----------- | ---------- | ----------- | ------- | ----------- | ----------- | ------------- | ------- |
-|  **qsocket**  |     ✅     |      ❌      | ✅          | ✅           | ✅           | ✅          | ❌           | ❌       | ❌           | ❌           | ❌             | ❌       |
-| **qs-netcat** |     ✅     |      ✅      | ✅          | ✅           | ✅           | ✅          | ✅           | ✅       | ✅           | ✅           | ✅             | ✅       |
-|  **qs-lite**  |     ✅     |      ✅      | ✅          | ✅           | ✅           | ✅          | ✅           | ✅       | ✅           | ✅           | ✅             | ✅       |
-|  **qs-mic**   |     ✅     |      ✅      | ✅          | ✅           | ✅           | ✅          | ❌           | ❌       | ❌           | ❌           | ❌             | ❌       |
-| ~**qs-cam**~  |     🚧     |      🚧      | 🚧          | 🚧           | 🚧           | 🚧          | 🚧           | 🚧       | 🚧           | 🚧           | 🚧             | 🚧       |
+- ✅ `Supported`
+- 🚧 `In progress`
+- ❌ `Unsupported`
+
+| **ARCH/OS** | **Linux** | **MacOS** | **Windows** | **Android** | **IOS** | **FreeBSD** | **OpenBSD** | **NetBSD** | **Solaris** | **Illumos** | **Dragonfly** | **AIX** |
+|:-----------:|:---------:|:---------:|:-----------:|:-----------:|:-------:|:-----------:|:-----------:|:----------:|:-----------:|:-----------:|:-------------:|:-------:|
+|  **AMD64**  |     ✅     |     ✅     |      ✅      |      ✅      |    🚧    |      ✅      |      ✅      |      ✅     |      ✅      |      ✅      |       ✅       |    ❌    |
+|  **ARM64**  |     ✅     |     ✅     |      ✅      |      ✅      |    🚧    |      ✅      |      ✅      |      ❌     |      ❌      |      ❌      |       ❌       |    ❌    |
+|   **386**   |     ✅     |     ❌     |      ✅      |      ✅      |    ❌    |      ✅      |      ✅      |      ✅     |      ❌      |      ❌      |       ❌       |    ❌    |
+|  **ARM32**  |     ✅     |     ❌     |      ✅      |      ✅      |    ❌    |      ✅      |      ✅      |      ✅     |      ❌      |      ❌      |       ❌       |    ❌    |
+| **RISCV64** |     🚧     |     ❌     |      ❌      |      ❌      |    ❌    |      🚧      |      ❌      |      ❌     |      ❌      |      ❌      |       ❌       |    ❌    |
+|  **MIPS64** |     ✅     |     ❌     |      ❌      |      ❌      |    ❌    |      ❌      |      ❌      |      ❌     |      ❌      |      ❌      |       ❌       |    ❌    |
+|  **MIPS32** |     ✅     |     ❌     |      ❌      |      ❌      |    ❌    |      ❌      |      ❌      |      ❌     |      ❌      |      ❌      |       ❌       |    ❌    |
+|  **MIPSLE** |     ✅     |     ❌     |      ❌      |      ❌      |    ❌    |      ❌      |      ❌      |      ❌     |      ❌      |      ❌      |       ❌       |    ❌    |
+|  **PPC64**  |     ✅     |     ❌     |      ❌      |      ❌      |    ❌    |      ❌      |      🚧      |      ❌     |      ❌      |      ❌      |       ❌       |    🚧    |
+| **PPC64LE** |     ✅     |     ❌     |      ❌      |      ❌      |    ❌    |      ❌      |      ❌      |      ❌     |      ❌      |      ❌      |       ❌       |    ❌    |
+|  **S390X**  |     ✅     |     ❌     |      ❌      |      ❌      |    ❌    |      ❌      |      ❌      |      ❌     |      ❌      |      ❌      |       ❌       |    ❌    |
 
 </details>
 
@@ -68,6 +70,3 @@ QSocket toolkit supports 12 platforms on 11 architecture, check **Supported Plat
 - Assume Alice shares the same password with Bob and Malice. When Alice stops listening for a connection then Malice could start to listen for the connection instead. Bob (when opening a new connection) can not tell if he is connecting to Alice or to Malice.
 - We did not invent SRP. It's a well-known protocol, and it is well-analyzed and trusted by the community. 
 
----
-
-If gs-netcat is a germanic battle axe... than qs-netcat is a turkish döner knife ᕕ(⌐■_■)ᕗ ♪♬ 
