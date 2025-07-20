@@ -4,7 +4,7 @@ theme = "hugo-theme-monochrome"
 googleAnalytics = "G-MNS1QE3TTP"
 defaultContentLanguage = "en"
 enableEmoji = true
-paginate = 5
+pagination.pagerSize = 5
 
 [taxonomies]
 category = "categories"
