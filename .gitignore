@@ -1,0 +1,8 @@
+node_modules/
+dist/
+*.local
+.DS_Store
+.vite/
+
+# npm is only used as a fallback; bun.lock is the lockfile of record.
+package-lock.json

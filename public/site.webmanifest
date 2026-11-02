@@ -1,0 +1,12 @@
+{
+  "name": "QSocket",
+  "short_name": "QSocket",
+  "description": "Encrypted peer-to-peer access through NAT and firewalls.",
+  "icons": [
+    { "src": "icon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "icon-512.png", "type": "image/png", "sizes": "512x512" }
+  ],
+  "theme_color": "#121411",
+  "background_color": "#121411",
+  "display": "standalone"
+}

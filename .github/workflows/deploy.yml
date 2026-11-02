@@ -1,0 +1,86 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [master, main]
+  # Lets a deploy be re-run from the Actions tab without an empty commit.
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Queue deployments instead of racing them. cancel-in-progress is deliberately
+# false: cutting off a deploy that is already uploading leaves Pages serving a
+# half-published tree, and the next push supersedes it a moment later anyway.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      # Cache bun's global module cache rather than node_modules: `bun install`
+      # stays the source of truth for what ends up in the tree, so a change to
+      # package.json cannot be masked by a restored directory.
+      - name: Cache Bun modules
+        uses: actions/cache@v4
+        with:
+          path: ~/.bun/install/cache
+          key: bun-${{ runner.os }}-${{ hashFiles('bun.lock', 'package.json') }}
+          restore-keys: bun-${{ runner.os }}-
+
+      # Must run before the build: it reports the path the site will be served
+      # from, which the bundle needs baked into its asset URLs.
+      - name: Configure Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Build
+        env:
+          PAGES_BASE_PATH: ${{ steps.pages.outputs.base_path }}
+        run: |
+          # configure-pages reports "/" for a custom domain and "/<repo>" for a
+          # project page. Vite wants a trailing slash on the latter.
+          case "$PAGES_BASE_PATH" in
+            '' | '/') BASE_PATH='/' ;;
+            */) BASE_PATH="$PAGES_BASE_PATH" ;;
+            *) BASE_PATH="$PAGES_BASE_PATH/" ;;
+          esac
+          echo "Building for base path: $BASE_PATH"
+          BASE_PATH="$BASE_PATH" ./build.sh
+
+      - name: Verify output
+        run: |
+          test -f dist/index.html || { echo "::error::dist/index.html missing"; exit 1; }
+          test -f dist/.nojekyll || { echo "::error::dist/.nojekyll missing"; exit 1; }
+          echo "Published tree:"
+          find dist -type f | sort
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

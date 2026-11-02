@@ -1,0 +1,21 @@
+{
+  "name": "qsocket-www",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static marketing site for QSocket, built with Vite + TypeScript and deployed to GitHub Pages.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "lint": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.11",
+    "@types/node": "^26.6.6",
+    "tailwindcss": "^4.1.11",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5"
+  }
+}
